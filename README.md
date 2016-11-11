@@ -42,8 +42,10 @@ And also in time our Webhook Manager will allow for Automated Webhook Execution 
   $xtc->BotName = "xTc Bot";
   $xtc->Avatar = "https://xtclabs.net/img/favicon.png";
   $xtc->HookUrl = "https://discordapp.com/api/webhooks/...";
-  $thumbnail = array("url" => "https://xtclabs.net/img/favicon.png", "height" => 64, "width" => 64);
-  $link[0] = $xtc->PushLink("https://xtclabs.net", "xTech Labs Official", "Free APIs, Webhook scheduler & AutoGo Personal Discord Bot!", $thumbnail);
+  $xtc->ThumbUrl = "https://xtclabs.net/img/favicon.png";
+  $xtc->ThumbHeight = 32;
+  $xtc->ThumbWidth = 32;
+  $link[0] = $xtc->PushLink("https://xtclabs.net", "xTech Labs Official", "Free APIs, Webhook scheduler & AutoGo Personal Discord Bot!");
   $xtc->DiscordPost($link);
 ?>
 ```
@@ -57,5 +59,29 @@ And also in time our Webhook Manager will allow for Automated Webhook Execution 
   $xtc->HookUrl = "https://discordapp.com/api/webhooks/...";
   $xtc->Message = "Your Message Here";
   $xtc->DiscordPost();
+?>
+```
+  
+> Posting a Author 
+```php
+  include 'discordphp-webhook.php';
+  $xtc = new xTechHooks();
+  $xtc->BotName = "xTc Bot";
+  $xtc->Avatar = "https://xtclabs.net/img/favicon.png";
+  $xtc->HookUrl = "https://discordapp.com/api/webhooks/...";
+  $author[0] = $xtc->PushAuthor(0, "Proxy", "https://xtclabs.net", "https://xtclabs.net/img/favicon.png");
+  $xtc->DiscordPost($author);
+?>
+```
+  
+> Posting a Footer 
+```php
+  include 'discordphp-webhook.php';
+  $xtc = new xTechHooks();
+  $xtc->BotName = "xTc Bot";
+  $xtc->Avatar = "https://xtclabs.net/img/favicon.png";
+  $xtc->HookUrl = "https://discordapp.com/api/webhooks/...";
+  $footer[0] = $xtc->PushFooter(0, "Testing the Footer", "https://xtclabs.net/img/favicon.png");
+  $xtc->DiscordPost($footer);
 ?>
 ```
