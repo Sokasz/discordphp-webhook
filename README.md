@@ -17,7 +17,9 @@ xTech Labs offers a widget that you can post on your website
 **Soon** You will also be able to set predefined messages and hide the iframe to automate  
 And also in time our Webhook Manager will allow for Automated Webhook Execution based on date.  
   
-
+## Installing DiscordPHP-Webhook
+> composer require xtechlabs/discordphp-webhook  
+  
 ## Using DiscordPHP-Webhook 
 ```php
 <?php
