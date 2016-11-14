@@ -1,0 +1,19 @@
+{
+    "name": "xtechlabs/discordphp-webhook",
+    "description": "Discord Webhook client.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joshua Cleland",
+            "email": "developer@xtclabs.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "xTechLabs\\Hooks\\": "src/xTechLabs"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^3.1"
+    }
+}
