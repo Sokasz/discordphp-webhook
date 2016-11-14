@@ -8,7 +8,6 @@ If you need any help at all feel free to join our discord!
   
 ## Introduction
 Handle Discord web hooks. Send image(s), Embed links with thumbnails and detailed descriptions.
-This class is not yet setup for composer.
   
 ## Alternative
 xTech Labs offers a widget that you can post on your website  
