@@ -18,70 +18,29 @@ xTech Labs offers a widget that you can post on your website
 And also in time our Webhook Manager will allow for Automated Webhook Execution based on date.  
   
 
-## Using DiscordPHP-Webhook
-> Posting Image(s)  
+## Using DiscordPHP-Webhook 
 ```php
 <?php
-  include 'discordphp-webhook.php';
-  $xtc = new xTechHooks();
-  // Setup bot information
-  $xtc->BotName = "xTc Bot";
-  $xtc->Avatar = "https://xtclabs.net/img/favicon.png";
-  $xtc->HookUrl = "https://discordapp.com/api/webhooks/...";
-  $img[0] = $xtc->PushImage(0, "https://link.to/img", 800, 600);
-  $img[1] = $xtc->PushImage(1, "https://link.to/img", 800, 600);
-  $xtc->DiscordPost($img);
-?>
-```
-  
-> Posting Link with description & Thumbnail.  
-```php
-<?php
-  include 'discordphp-webhook.php';
-  $xtc = new xTechHooks();
-  $xtc->BotName = "xTc Bot";
-  $xtc->Avatar = "https://xtclabs.net/img/favicon.png";
-  $xtc->HookUrl = "https://discordapp.com/api/webhooks/...";
-  $xtc->ThumbUrl = "https://xtclabs.net/img/favicon.png";
-  $xtc->ThumbHeight = 32;
-  $xtc->ThumbWidth = 32;
-  $link[0] = $xtc->PushLink("https://xtclabs.net", "xTech Labs Official", "Free APIs, Webhook scheduler & AutoGo Personal Discord Bot!");
-  $xtc->DiscordPost($link);
-?>
-```
-  
-> Posting a Plain Message  
-```php
-  include 'discordphp-webhook.php';
-  $xtc = new xTechHooks();
-  $xtc->BotName = "xTc Bot";
-  $xtc->Avatar = "https://xtclabs.net/img/favicon.png";
-  $xtc->HookUrl = "https://discordapp.com/api/webhooks/...";
-  $xtc->Message = "Your Message Here";
-  $xtc->DiscordPost();
-?>
-```
-  
-> Posting a Author 
-```php
-  include 'discordphp-webhook.php';
-  $xtc = new xTechHooks();
-  $xtc->BotName = "xTc Bot";
-  $xtc->Avatar = "https://xtclabs.net/img/favicon.png";
-  $xtc->HookUrl = "https://discordapp.com/api/webhooks/...";
-  $author[0] = $xtc->PushAuthor(0, "Proxy", "https://xtclabs.net", "https://xtclabs.net/img/favicon.png");
-  $xtc->DiscordPost($author);
-?>
-```
-  
-> Posting a Footer 
-```php
-  include 'discordphp-webhook.php';
-  $xtc = new xTechHooks();
-  $xtc->BotName = "xTc Bot";
-  $xtc->Avatar = "https://xtclabs.net/img/favicon.png";
-  $xtc->HookUrl = "https://discordapp.com/api/webhooks/...";
-  $footer[0] = $xtc->PushFooter(0, "Testing the Footer", "https://xtclabs.net/img/favicon.png");
-  $xtc->DiscordPost($footer);
+  require 'vendor/autoload.php';
+	$xtc = new xTechLabs\Hooks\Discord;
+	$xtc->HookUrl = "https://discordapp.com/api/webhooks/....";
+	// $xtc->BotName = "xtcLabs-";
+	$xtc->Message = "Testing some stuff out";
+	// Set a single link. (Multiple links aren't supported in this version)
+	$xtc->LinkUrl = "https://xtclabs.net";
+	$xtc->LinkTitle = "xTech Labs.net";
+	$xtc->LinkDesc = "xTech Labs offers numerous amounts of great features and a bot for Discord!";
+	// Set a thumbnail. Even though Discord offers the option to change thumb dimensions. it appears to not work.
+	$xtc->ThumbUrl = "https://xtclabs.net/img/favicon.png";
+	$xtc->ThumbHeight = 16;
+	$xtc->ThumbWidth = 16;
+	// $xtc->Images[0] = array("url" => "https://xtclabs.net/img/RedDawn_preview.png", "height" => 800, "width" => 600);
+	// $xtc->Images[1] = array("url" => "https://xtclabs.net/img/GreenSkull_preview.png", "height" => 800, "width" => 600);
+	// $xtc->Test();
+	try {
+		$xtc->Post();
+	} catch(\Exception $e) {
+		echo $e->getMessage();
+	}
 ?>
 ```
