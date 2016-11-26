@@ -55,6 +55,9 @@ class Discord {
 	/* Link Description */
 	public $LinkDesc = NULL;
 
+	/* changes embed border color */
+	public $embedColor = NULL;
+
 
 
 	public function Post() {
@@ -68,15 +71,25 @@ class Discord {
 			}
 			$sys["embeds"] = $e;
 		}
+		if(isset($this->embedColor)) {
+			if(strpos($this->embedColor, "#") > -1) {
+	            $c=str_replace("#", "", $this->embedColor);
+	            if (!preg_match("/#([a-fA-F0-9]{3}){1,2}\b/", $c)) {
+	            	$color = hexdec( strtolower($c) );
+	        	}
+        	}
+		} else {
+			$color = 0;
+		}
 		// For now only allow one link to be displayed. - Later i will Rewrite this to allow multiple link embeds.
 		if(! empty($this->LinkUrl)) {
 			$sys = WebHook::initUser();
 			$n=0;
 			if(! isset($this->ThumbUrl)) {
-				$e = array("url" => $this->LinkUrl, "title" => $this->LinkTitle, "description" => $this->LinkDesc);
+				$e = array("url" => $this->LinkUrl, "title" => $this->LinkTitle, "description" => $this->LinkDesc, "color" => $color);
 			} else {
 				$th = array("url" => $this->ThumbUrl, "height" => $this->ThumbHeight, "width" => $this->ThumbWidth);
-				$e = array("url" => $this->LinkUrl, "title" => $this->LinkTitle, "description" => $this->LinkDesc, "thumbnail" => $th);
+				$e = array("url" => $this->LinkUrl, "title" => $this->LinkTitle, "description" => $this->LinkDesc, "thumbnail" => $th, "color" => $color);
 			}
 			$sys["embeds"] = array(0 => $e);
 		}
